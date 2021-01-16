@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/.gitignore
+.idea/Log_INOUT.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+__pycache__/
+debug.log
+output/
+/Database/
+/TimeLogData/
+.idea/vcs.xml
+/venv/
