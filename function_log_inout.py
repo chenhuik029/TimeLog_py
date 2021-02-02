@@ -307,6 +307,9 @@ class EmployeeLogInOut:
 
                 calculated_time_diff_previous_month = last_date_of_month_obj.date() - datetime_in_obj_pre_month.date()
 
+                # For time log in latest month after filling up previous month
+                self.calculated_time_diff = self.get_datetime_now.date() - self.get_datetime_now.replace(day=1).date()
+
                 # If there is no time-out in previous month time log database
                 # -----------------------------------------------------------------------------------------------------
                 if timelog_data_previous_month[no_of_read_previous_month - 1][3] is "":
@@ -346,8 +349,6 @@ class EmployeeLogInOut:
                     add_working_time_for_previous_month = True
 
                     # ------------------------------------------------------------------------------------------------
-                    # For time log in latest month after filling up previous month
-                    self.calculated_time_diff = self.get_datetime_now.date() - self.get_datetime_now.replace(day=1).date()
 
                     # To calculate session for each consecutive no log out day for latest month
                     datetime_in_obj = self.get_datetime_now.replace(day=1)
