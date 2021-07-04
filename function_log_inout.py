@@ -312,6 +312,7 @@ class EmployeeLogInOut:
 
                 # If there is no time-out in previous month time log database
                 # -----------------------------------------------------------------------------------------------------
+                datetime_in_obj = self.get_datetime_now.replace(day=1)
                 if timelog_data_previous_month[no_of_read_previous_month - 1][3] is "":
 
                     # To calculate session for each consecutive no log out day for the previous month
@@ -351,7 +352,7 @@ class EmployeeLogInOut:
                     # ------------------------------------------------------------------------------------------------
 
                     # To calculate session for each consecutive no log out day for latest month
-                    datetime_in_obj = self.get_datetime_now.replace(day=1)
+                    # datetime_in_obj = self.get_datetime_now.replace(day=1)
                     for day in range(self.calculated_time_diff.days + 1):
 
                         date_time_out_str = f'{datetime_in_obj.date()} 23:59:59'
@@ -383,6 +384,7 @@ class EmployeeLogInOut:
                 # If time out in previous month last working day has filled up, log time-in for current month
                 # -----------------------------------------------------------------------------------------------------
                 else:
+
                     # Check if previous month time log last date is last day of month, if not, fill it up.
                     if datetime_in_obj_pre_month.date() != last_date_of_month_obj.date():
                         write_id_in_previous_month = no_of_read_previous_month
@@ -436,7 +438,9 @@ class EmployeeLogInOut:
                     # Fill in absent days
                     else:
                         self.add_time_log_db.id = str(write_id_in + day)
+                        print(datetime_in_obj.date())
                         self.add_time_log_db.date = f'{(datetime_in_obj.date() + timedelta(days=day+1))}'
+                        print(self.add_time_log_db.date)
                         self.add_time_log_db.time_in = "00:00:00"
                         self.add_time_log_db.time_out = "00:00:00"
                         self.add_time_log_db.time_per_session = "00:00:00"
